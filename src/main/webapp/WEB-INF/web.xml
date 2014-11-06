@@ -1,0 +1,52 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+   
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- 对所有servlet都可以使用 -->
+  <context-param>
+     <param-name>Global</param-name>  
+     <param-value>Global param JNDI</param-value>
+  </context-param> 
+  
+  <!-- 当发生整个Web应用程序或应用程序中特定Http回话时，触发某种事件 -->
+  <listener>
+    <listener-class>com.nnu.listenter.GlobalListenter</listener-class>
+  </listener>
+  
+  <servlet>
+    <servlet-name>JNDI-test</servlet-name>
+    <servlet-class>com.nnu.servlet.JNDIServlet</servlet-class>
+    <init-param>
+      <param-name>jndi-des</param-name>
+      <param-value>welcome to use tomcat jndi</param-value>
+    </init-param>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>JNDI-test</servlet-name>
+    <url-pattern>/JNDI</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 对话Session在超过30分钟的闲置期后，会话将超时 -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+   
+  <!-- 将后缀名为foo的文件映射到 application/x-ian-test-file -->
+  <mime-mapping>
+    <extension>foo</extension>
+    <mime-type>application/x-ian-test-file</mime-type>
+  </mime-mapping>
+  
+   <!-- 静态对象的JNDI查询 -->
+  <env-entry>
+     <env-entry-name>solr/home</env-entry-name>
+     <env-entry-value>D:\solr\solr-home</env-entry-value>
+     <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+  
+</web-app>
